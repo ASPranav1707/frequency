@@ -1,0 +1,40 @@
+public class Main
+{
+    static int Lower(int a[],int t)
+    {
+        int li=0,hi=a.length-1;
+        while(li<hi)
+        {
+            int mi=li+(hi-li)/2;
+            if(t<=a[mi])
+            hi=mi;
+            else
+            li=mi+1;
+        }
+        if(a[li]!=t)
+        return -1;
+        return li;
+    }
+    static int Upper(int a[],int t)
+    {
+        int li=0,hi=a.length-1;
+        while(li<hi)
+        {
+            int mi=li+(hi-li)/2;
+            if(t>=a[mi])
+            li=mi+1;
+            else
+            hi=mi;
+        }
+        return li;
+    }
+	public static void main(String[] args) 
+	{
+		int a[]={1,1,2,2,4,5,5,6,6,6,6,9,10,11};
+		int t=6;
+		int ans=Lower(a,t);
+		int value=Upper(a,t);
+		int final_val=Math.abs(ans-value);
+		System.out.println(final_val);
+	}
+}
